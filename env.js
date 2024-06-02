@@ -38,7 +38,7 @@ const PACKAGE = 'com.vvibe'; // android package name
 const NAME = 'vvibe'; // app name
 const EXPO_ACCOUNT_OWNER = 'expo-owner'; // expo account owner
 const EAS_PROJECT_ID = 'c3e1075b-6fe7-4686-aa49-35b46a229044'; // eas project id
-const SCHEME = 'vvibe-client'; // app scheme
+const SCHEME = 'vvibe'; // app scheme
 
 /**
  * We declare a function withEnvSuffix that will add a suffix to the variable name based on the APP_ENV
