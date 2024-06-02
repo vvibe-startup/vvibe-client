@@ -14,9 +14,9 @@ name: Type Check (tsc)
 
 on:
   push:
-    branches: [main, master]
+    branches: [main, stage, dev]
   pull_request:
-    branches: [main, master]
+    branches: [main, stage, dev]
 
 jobs:
   type-check:
