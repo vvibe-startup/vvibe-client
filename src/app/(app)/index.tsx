@@ -1,6 +1,8 @@
+import { Slider } from '@miblanchard/react-native-slider';
 import React, { useState } from 'react';
 import { TextInput } from 'react-native';
 
+import SliderContainer from '@/components/slider-container/slider-container';
 import { Text, View } from '@/ui';
 
 const fakeData = [
@@ -82,6 +84,17 @@ const HomeScreen = () => {
           value={filter.maritalStatus}
           onChangeText={(value) => handleFilterChange('maritalStatus', value)}
         />
+        <SliderContainer caption="Age" sliderValue={[18, 99]}>
+          <Slider
+            animateTransitions
+            maximumTrackTintColor="#d3d3d3"
+            maximumValue={100}
+            minimumTrackTintColor="#1fb28a"
+            minimumValue={18}
+            step={1}
+            thumbTintColor="#1a9274"
+          />
+        </SliderContainer>
       </View>
     </View>
   );
