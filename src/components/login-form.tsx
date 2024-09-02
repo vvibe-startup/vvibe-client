@@ -61,6 +61,7 @@ export const LoginForm = ({ onSubmit = () => {} }: LoginFormProps) => {
         testID="login-button"
         label="Login"
         onPress={handleSubmit(onSubmit)}
+        size="lg"
       />
     </View>
   );

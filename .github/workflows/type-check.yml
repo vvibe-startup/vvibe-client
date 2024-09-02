@@ -14,9 +14,9 @@ name: Type Check (tsc)
 
 on:
   push:
-    branches: [main, master]
+    branches: [main, stage, dev]
   pull_request:
-    branches: [main, master]
+    branches: [main, stage, dev]
 
 jobs:
   type-check:
@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 📦 Checkout project repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
