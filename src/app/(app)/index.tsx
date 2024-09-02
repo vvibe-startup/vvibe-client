@@ -1,35 +1,103 @@
-import { FlashList } from '@shopify/flash-list';
-import React from 'react';
+import { Slider } from '@miblanchard/react-native-slider';
+import React, { useState } from 'react';
+import { TextInput } from 'react-native';
 
-import type { Post } from '@/api';
-import { usePosts } from '@/api';
-import { Card } from '@/components/card';
-import { EmptyList, FocusAwareStatusBar, Text, View } from '@/ui';
+import SliderContainer from '@/components/slider-container/slider-container';
+import { Text, View } from '@/ui';
 
-export default function Feed() {
-  const { data, isPending, isError } = usePosts();
-  const renderItem = React.useCallback(
-    ({ item }: { item: Post }) => <Card {...item} />,
-    []
-  );
+const fakeData = [
+  {
+    id: 1,
+    isActive: true,
+    gender: 'male',
+    age: 25,
+    income: 50000,
+    maritalStatus: 'single',
+  },
+  {
+    id: 2,
+    isActive: false,
+    gender: 'female',
+    age: 30,
+    income: 60000,
+    maritalStatus: 'married',
+  },
+  {
+    id: 3,
+    isActive: true,
+    gender: 'male',
+    age: 35,
+    income: 70000,
+    maritalStatus: 'single',
+  },
+  {
+    id: 4,
+    isActive: true,
+    gender: 'female',
+    age: 40,
+    income: 80000,
+    maritalStatus: 'married',
+  },
+  {
+    id: 5,
+    isActive: false,
+    gender: 'male',
+    age: 45,
+    income: 90000,
+    maritalStatus: 'single',
+  },
+];
 
-  if (isError) {
-    return (
-      <View>
-        <Text> Error Loading data </Text>
-      </View>
-    );
-  }
+const HomeScreen = () => {
+  const data = fakeData;
+  const [filter, setFilter] = useState({
+    age: '',
+    income: '',
+    maritalStatus: '',
+  });
+
+  const handleFilterChange = (key: string, value: string) => {
+    setFilter((prevFilter) => ({ ...prevFilter, [key]: value }));
+  };
+
+  // Calculate the number of active users
+  const activeUsers = data?.filter((user) => user.isActive).length || 0;
+  // Calculate the number of male users
+  const maleUsers = data?.filter((user) => user.gender === 'male').length || 0;
+  // Calculate the number of female users
+  const femaleUsers =
+    data?.filter((user) => user.gender === 'female').length || 0;
+
   return (
-    <View className="flex-1 ">
-      <FocusAwareStatusBar />
-      <FlashList
-        data={data}
-        renderItem={renderItem}
-        keyExtractor={(_, index) => `item-${index}`}
-        ListEmptyComponent={<EmptyList isLoading={isPending} />}
-        estimatedItemSize={300}
-      />
+    <View className="flex-1">
+      <Text>Stats</Text>
+      <Text>Number of active users: {activeUsers}</Text>
+      <Text>Number of male users: {maleUsers}</Text>
+      <Text>Number of female users: {femaleUsers}</Text>
+      <View>
+        <Text>Filter by:</Text>
+        <Text>Income:</Text>
+        <Text>Age</Text>
+        <Text>Distance</Text>
+        <TextInput
+          placeholder="Marital Status"
+          value={filter.maritalStatus}
+          onChangeText={(value) => handleFilterChange('maritalStatus', value)}
+        />
+        <SliderContainer caption="Age" sliderValue={[18, 99]}>
+          <Slider
+            animateTransitions
+            maximumTrackTintColor="#d3d3d3"
+            maximumValue={100}
+            minimumTrackTintColor="#1fb28a"
+            minimumValue={18}
+            step={1}
+            thumbTintColor="#1a9274"
+          />
+        </SliderContainer>
+      </View>
     </View>
   );
-}
+};
+
+export default HomeScreen;

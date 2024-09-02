@@ -33,11 +33,11 @@ require('dotenv').config({
 
 // TODO: Replace these values with your own
 
-const BUNDLE_ID = 'com.vvibe'; // ios bundle id
-const PACKAGE = 'com.vvibe'; // android package name
+const BUNDLE_ID = 'oneline.vvibe.dating'; // ios bundle id
+const PACKAGE = 'online.vvibe.dating'; // android package name
 const NAME = 'vvibe'; // app name
-const EXPO_ACCOUNT_OWNER = 'expo-owner'; // expo account owner
-const EAS_PROJECT_ID = 'c3e1075b-6fe7-4686-aa49-35b46a229044'; // eas project id
+const EXPO_ACCOUNT_OWNER = 'vvibe-startup'; // expo account owner
+const EAS_PROJECT_ID = 'e5841fbf-7e42-471a-be18-e1168bf8cc61'; // eas project id
 const SCHEME = 'vvibe'; // app scheme
 
 /**
